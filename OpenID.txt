@@ -1,0 +1,107 @@
+OpenID lets you sign in using an identity provider instead of sharing your password with apps. Your password is verified by the provider, which then confirms your identity to the app. You control what profile data is shared, and OpenID is decentralized and free for anyone to use or provide.
+
+🔐 What OpenID Connect actually is
+
+OpenID Connect (OIDC) is an authentication layer on top of OAuth 2.0.
+
+OAuth 2.0 → Authorization (what can the user access?)
+OIDC → Authentication (who is the user?)
+🧠 In simple terms
+
+OpenID Connect answers this question:
+
+👉 “Who is the user currently logged in?”
+
+Instead of your app handling login itself, it delegates authentication to a trusted provider (like Google, Microsoft, etc.).
+
+⚙️ How it works (step-by-step)
+1) User clicks “Login with Google”
+2) Your app redirects user to an Authorization Server (Identity Provider)
+3) User logs in there (Google handles password)
+4) Provider sends back a token (ID Token)
+5) Your app reads the token → confirms user identity
+
+✅ Your app never sees or stores the password
+
+
+OpenID Connect gives developers a secure and reliable way to identify the current user of an app or browser, while eliminating the need to handle passwords—reducing the risk of credential-related data breaches.
+
+🧠 Why OIDC exists
+
+Traditionally, apps had to:
+
+Store passwords ❌
+Secure passwords ❌
+Handle breaches ❌
+
+With OIDC:
+
+Login is handled by a trusted provider (like Google)
+Your app just trusts the result
+⚙️ How OpenID Connect Works (Flow)
+User opens your app
+Clicks Login
+App (Client / RP) redirects to OpenID Provider (OP)
+User logs in there
+OP verifies identity
+OP sends back:
+ID Token (who the user is)
+Access Token (optional, for APIs)
+App verifies the token and logs the user in
+🎯 Key Components (Important Terms)
+👤 User
+
+The person using your app
+
+💻 Client (Relying Party - RP)
+
+Your application
+👉 It relies on another service to authenticate users
+
+🔐 OpenID Provider (OP) / Identity Provider (IDP)
+
+The service that logs users in
+Examples: Google, Auth0, Microsoft
+
+🪪 ID Token (Most Important)
+A JWT token
+Contains:
+User ID (sub)
+Login time
+Authentication details
+
+👉 This is how your app knows who the user is
+
+🔑 Access Token
+Used to call APIs (not for identity)
+Optional in OIDC
+📦 UserInfo Endpoint
+API that returns extra user details
+Requires access token
+🔥 Why developers love OIDC
+✅ No password management
+You don’t store passwords
+Less risk of data breaches
+🔐 Secure & verifiable
+Tokens are signed → cannot be tampered with
+🌍 Works everywhere
+Web apps
+Mobile apps
+SPAs (React, etc.)
+🔌 Extensible
+
+Supports:
+
+Encryption
+Auto discovery of providers
+Logout handling
+
+
+
+What is OAuth 2.0 and how does it related to OpenID Connect?
+OAuth 2.0, is a framework, specified by the IETF in RFCs 6749 and 6750 (published in 2012) designed to support the development of authentication and authorization protocols. It provides a variety of standardized message flows based on JSON and HTTP; OpenID Connect uses these to provide Identity services.
+
+
+How does OpenID Connect relate to SAML?
+The Security Assertion Markup Language (SAML) is an XML-based federation technology used in some enterprise and academic use cases. OpenID Connect can satisfy these same use cases but with a simpler, JSON/REST based protocol. OpenID Connect was designed to also support native apps and mobile applications, whereas SAML was designed only for Web-based applications. SAML and OpenID Connect will likely coexist for quite some time, with each being deployed in situations where they make sense.
+

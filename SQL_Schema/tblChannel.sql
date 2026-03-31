@@ -6,6 +6,6 @@ CREATE TABLE tblChannels (
     Descriptions VARCHAR(MAX),
     SubscriptionCount INT,
     UserId INT,
-    CONSTRAINT tblRoles FOREIGN KEY (UserId)
+    CONSTRAINT FK_TBL_ROLES FOREIGN KEY (UserId)
         REFERENCES tblUser(UserId)
 );
